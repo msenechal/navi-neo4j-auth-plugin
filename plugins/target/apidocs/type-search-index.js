@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.neo4j.ecb.auth.plugin","l":"ExposeConfigExtensionFactory.Dependencies"},{"p":"org.neo4j.ecb.auth.plugin","l":"ExposeConfigExtensionFactory"},{"p":"org.neo4j.ecb.auth.plugin","l":"SamlPlugin"}];updateSearchResults();

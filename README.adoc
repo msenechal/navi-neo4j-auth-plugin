@@ -1,0 +1,51 @@
+# SAML SSO Plugin for ECB
+
+This provides a custom Neo4j authentication and authorization plugin to perform authentication/authorization against
+the NAVI backend (ultimately handling the SSO integration with both IGAM and IAM). The NAVI application offers a jump
+point to the neo4j browser, passing the username and access token via local storage. The neo4j browser will login at the
+database using those credentials. At this point the custom auth plugin will verify the access token with the backend
+and at the same time retrieve the list of the user's entitlements, this way not only handling the user's authentication
+but also authorization.
+
+NOTE: This plugin has been developed by Neo4j PS and is therefore not officially supported by the Neo4j Product team. 
+Changes in the product through version upgrades can have impact(s) on the plugin and might require change(s) in the 
+code.
+
+## Local setup
+
+1. Create a `.env` file with the following content:
+    ```
+    export NEO4J_ENTERPRISE_USER=<neo4j-enterprise-remote-user>
+    export NEO4J_ENTERPRISE_PASS=<neo4j-enterprise-remote-token>
+    ```
+2. Run `source .env` to export the environment variables
+3. Run `make install` to install the dependencies (they should be located in a `.m2` folder in the repositories root directory)
+
+## Required configuration
+
+Example config : `conf/saml.conf`
+
+[source,config]
+----
+plugins.auth.saml.validation_url=http://localhost:8080/user/info
+plugins.auth.saml.default_role=PUBLIC
+----
+
+### Enable the SAML Plugin for authentication and authorization
+
+[source,config]
+----
+dbms.security.authentication_providers=plugin-org.neo4j.ecb.auth.plugin.SamlPlugin,native
+dbms.security.authorization_providers=plugin-org.neo4j.ecb.auth.plugin.SamlPlugin,native
+----
+
+### Debugging
+
+To enable verbose http logging, amend to `conf/neo4j.conf`
+
+[source,config]
+----
+dbms.jvm.additional=-Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.SimpleLog
+dbms.jvm.additional=-Dorg.apache.commons.logging.simplelog.showdatetime=true
+dbms.jvm.additional=-Dorg.apache.commons.logging.simplelog.log.org.apache.http=DEBUG
+----

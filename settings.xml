@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+    <localRepository>.m2/repository</localRepository>
+    <servers>
+        <server>
+            <id>neo4j-enterprise</id>
+            <username>${env.NEO4J_ENTERPRISE_USER}</username>
+            <password>${env.NEO4J_ENTERPRISE_PASS}</password>
+        </server>
+        <server>
+            <id>ecb-maven</id>
+            <username>${env.ECB_MAVEN_USER}</username>
+            <password>${env.ECB_MAVEN_PASS}</password>
+        </server>
+        <server>
+            <id>navi-maven</id>
+            <username>${env.ECB_MAVEN_USER}</username>
+            <password>${env.ECB_MAVEN_PASS}</password>
+        </server>
+    </servers>
+    <mirrors>
+        <mirror>
+            <id>ecb-maven</id>
+            <name>ECB Maven Mirror</name>
+            <url>https://artifactory.sofa.dev/artifactory/maven-authremote/</url>
+            <!--
+            As the ECB maven mirror cannot be used when installing dependencies on local machines due to some
+            firewall settings preventing us to download specific packages, the mirror can be deactivated by simply
+            not setting the CENTRAL env var to "central"
+            We only want to mirror central maven repo because there is no mirror for neo4j-enterprise
+            -->
+            <mirrorOf>${env.CENTRAL}</mirrorOf>
+        </mirror>
+    </mirrors>
+</settings>

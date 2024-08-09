@@ -1,0 +1,6 @@
+projectKey=org.neo4j.ecb.auth:neo4j-ecb-auth-plugins-parent
+serverUrl=http://localhost:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://localhost:9000/dashboard?id=org.neo4j.ecb.auth%3Aneo4j-ecb-auth-plugins-parent
+ceTaskId=ef3d04bc-dba1-44f0-ae7e-499a41eca572
+ceTaskUrl=http://localhost:9000/api/ce/task?id=ef3d04bc-dba1-44f0-ae7e-499a41eca572

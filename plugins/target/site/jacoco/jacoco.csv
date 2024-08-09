@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Neo4j ECB Auth Plugins,org.neo4j.ecb.auth.plugin,SamlPlugin,41,295,7,15,10,64,8,16,2,11
+Neo4j ECB Auth Plugins,org.neo4j.ecb.auth.plugin,ExposeConfigExtensionFactory.new LifecycleAdapter() {...},0,14,0,0,0,3,0,2,0,2
+Neo4j ECB Auth Plugins,org.neo4j.ecb.auth.plugin,ExposeConfigExtensionFactory,0,22,0,0,0,9,0,6,0,6
